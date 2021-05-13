@@ -62,3 +62,20 @@ Let num = 3 in the script
 {:else}
 <p>NOT GREATER THAN 5</p>
 {/if}
+
+SETTING PROPS
+2 components - App and Modal
+you can set properties in App and pass them into Modal
+
+<!-- pasing props of message from App  -->
+<Modal message="hey, i am a prop value" isPromo={true} />
+<!-- accepting props into Modal (EXPORT is required)-->
+<script>
+  export let isPromo = false; // exporting b/c value may be passed in or set outside
+  export let message = "default value"; //  if msg is being passed in if not, default value
+</script>
+
+COMMON EVENT MODIFIERS
+once - makes sure the event can only fire once - removes handler
+preventDefault - prevents the default action (like on a form)
+self - only fires the event if the clicked element is the TARGET

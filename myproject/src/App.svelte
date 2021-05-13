@@ -2,18 +2,23 @@
 
 	import Modal from './Modal.svelte';
 
-let people = [
-
-    { name: 'yoshi', beltColour: 'black', age: 25, id: 1 },
-    { name: 'mario', beltColour: 'orange', age: 45, id: 2 },
-    { name: 'luigi', beltColour: 'brown', age: 35, id: 3 }
-  ];
+	let people = [
+		{ name: 'yoshi', beltColour: 'black', age: 25, id: 1 },
+		{ name: 'mario', beltColour: 'orange', age: 45, id: 2 },
+		{ name: 'luigi', beltColour: 'brown', age: 35, id: 3 }
+	];
+	let num = 3;
+	let showModal = true;	
 
 	const handleDelete = (id) => {
 		people = people.filter( (person) => person.id !=id);
 	}
 
-	let num = 3;
+	const toggleModal = () =>{
+		showModal = !showModal;
+	}
+
+
 
 </script>
 
@@ -25,8 +30,8 @@ let people = [
 <p>NOT GREATER THAN 5</p>
 {/if}
 
-
-<Modal />
+<!-- pasing props of message into modal  -->
+<Modal message="hey, i am a prop value" isPromo={true} showModal={showModal} on:click={toggleModal}/>
 
 <main>
 	<!-- W/O LOOP 
@@ -34,6 +39,7 @@ let people = [
 		<h4>{people[0].name}</h4>
 		<p>{people[0].beltColour}</p> 
 	</div>-->
+
 
 		{#each people as person (person.id) } 
 			<div>
@@ -46,6 +52,8 @@ let people = [
 			</div>
 			{:else}<p>no data in arrayName</p> 
 		{/each}
+
+		<button on:click|once={toggleModal}>Show Modal</button>
 
 
 </main>

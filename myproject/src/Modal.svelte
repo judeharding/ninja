@@ -1,16 +1,19 @@
 <script>
-  let showModal = true;
-  let isPromo = false;
+   // export is declaring accepted props
+  export let showModal = false; // will determine if this modal shows from App.svelte
+  export let isPromo = false; // exporting b/c value may be passed in or set outside
+  export let message = "default value"; //  if msg is being passed in if not, default value
+  
 </script>
 
 {#if showModal}
-<!-- CONDITIONALLY APPLY A CLASS isPromo  -->
-<div class="backdrop" class:promo={isPromo}>
-  <div class="modal">
-    <p>Sign Up For Offers!</p>
+  <!-- CONDITIONALLY APPLY THE CLASS isPromo  -->
+  <!-- on:click event is forwared to the parent calling this modal and the pipe is the event modifier -->
+  <div class="backdrop" class:promo={isPromo} on:click|self>
+    <div class="modal">
+      <p> {message} </p>
+    </div>
   </div>
-</div>
-
 {/if}
 
 <style>
