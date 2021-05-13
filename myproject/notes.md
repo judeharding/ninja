@@ -79,3 +79,10 @@ COMMON EVENT MODIFIERS
 once - makes sure the event can only fire once - removes handler
 preventDefault - prevents the default action (like on a form)
 self - only fires the event if the clicked element is the TARGET
+ex: <button on:click|once={somefunc}></button>
+
+SLOTS - a way to pass child-content into a component and render inside the component
+
+to bind data:
+let name;
+<input type="text" bind:value={name}>

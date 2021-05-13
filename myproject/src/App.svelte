@@ -1,6 +1,7 @@
 <script>
 
 	import Modal from './Modal.svelte';
+	import AddPersonForm from './AddPersonForm.svelte';
 
 	let people = [
 		{ name: 'yoshi', beltColour: 'black', age: 25, id: 1 },
@@ -31,7 +32,16 @@
 {/if}
 
 <!-- pasing props of message into modal  -->
-<Modal message="hey, i am a prop value" isPromo={true} showModal={showModal} on:click={toggleModal}/>
+<!-- <Modal message="hey, i am a prop value" isPromo={true} showModal={showModal} on:click={toggleModal}/> -->
+
+<!-- preparing for a SLOT -->
+<Modal {showModal} on:click={toggleModal}>
+	<AddPersonForm/>
+</Modal>
+
+<button on:click|once={toggleModal}>Show Modal</button>
+
+
 
 <main>
 	<!-- W/O LOOP 
@@ -53,9 +63,7 @@
 			{:else}<p>no data in arrayName</p> 
 		{/each}
 
-		<button on:click|once={toggleModal}>Show Modal</button>
-
-
+	
 </main>
 
 <style>
