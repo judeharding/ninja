@@ -1,4 +1,8 @@
 <script>
+  // needed to add data from a form to an array
+  import { createEventDispatcher } from 'svelte';
+
+  let dispatch = createEventDispatcher();
   let name;
   let beltColour;
   let age;
@@ -8,8 +12,18 @@
   let skills = [];
 
   const handleSubmit = () => {
-    console.log(name, beltColour, age, skills);
-  }
+    console.log("FROM ADDPERSONFORM   " + name, beltColour, age, skills);
+
+    const person = {
+      name: name, 
+      beltColour: beltColour,
+      age: age,
+      skills: skills,
+      id: Math.random()
+    };
+
+    dispatch('addPerson', person); 
+     }
 </script>
 
 <h3>Add a new person</h3>
@@ -17,7 +31,9 @@
 		<input type="text" placeholder="name" bind:value={name}>
 		<!-- <input type="text" placeholder="belt color" bind:value={beltColour}> -->
     <input type="number" placeholder="age" bind:value={age}>
-    <label >Skills: </label>
+
+    <!-- svelte-ignore a11y-label-has-associated-control -->
+    <label> Skills: </label>
     <!-- <input type="checkbox" bind:checked={fighting}>fighting<br>
     <input type="checkbox" bind:checked={sneaking}>sneaking<br>
     <input type="checkbox" bind:checked={running}>running<br> -->
@@ -25,7 +41,8 @@
     <input type="checkbox" bind:group={skills} value="sneaking">sneaking<br>
     <input type="checkbox" bind:group={skills} value="running">running<br>
 
-    <label >Belt Colour</label>
+     <!-- svelte-ignore a11y-label-has-associated-control -->
+    <label >Belt Colour:</label>
       <select bind:value={beltColour}>
         <option value="black">black</option>
         <option value="orange">orange</option>

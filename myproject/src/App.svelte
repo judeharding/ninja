@@ -19,7 +19,12 @@
 		showModal = !showModal;
 	}
 
-
+const addPerson = (e) => {
+	// console.log("FROM APPSVELTE    "  + e.detail);
+	const person = e.detail;
+	people = [person, ...people];
+	showModal = false;
+};
 
 </script>
 
@@ -36,7 +41,7 @@
 
 <!-- preparing for a SLOT -->
 <Modal {showModal} on:click={toggleModal}>
-	<AddPersonForm/>
+	<AddPersonForm on:addPerson={addPerson} />
 </Modal>
 
 <button on:click|once={toggleModal}>Show Modal</button>
