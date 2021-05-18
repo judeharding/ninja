@@ -1,13 +1,15 @@
 <script>
-
+// logic 
 
 </script>
+
 <header>
 <h1>
   <img src="./img/poll_ninja_logo.svg" alt="Poll Ninja Logo">
 </h1>
 
 </header>
+
 <style>
 header{
   background: #f7f7f7;

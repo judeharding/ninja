@@ -24,12 +24,19 @@ UI components
 ..Card component
 ..Tab component
 
+You will need to add a img folder to public
+-best to use svg images vs jpg's for scalablity
+
+You will need to add a components folder to src
+
+You MIGHT need to change any global padding in the public/global.css
+
 components end in .svelte
 
 App.svelte has
 3 sections within a .svelte file
 
-- script tags - for the logic
+- script tags - for the logic = IMPORT ANY COMPONENT FILES
 - html template tags - for the dom
 - style tags - for the css
 
