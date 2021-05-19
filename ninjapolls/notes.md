@@ -110,3 +110,6 @@ SLOTS - a way to pass child-content into a component and render inside the compo
 to bind data:
 let name;
 <input type="text" bind:value={name}>
+
+FORM VALIDATION
+no existing svelte process so you will have to write your own on the submit or click handler function of that component.
