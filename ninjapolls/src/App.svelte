@@ -24,6 +24,15 @@ const tabChange = (e) => {
       votesA: 9,
       votesB: 15,
     },
+
+		{
+      id: 2,
+      question: 'Peanut Butter or Nutella?',
+      answerA: 'Peanut Butter',
+      answerB: 'Nutella',
+      votesA: 15,
+      votesB: 9,
+    },
   ];
 
 
@@ -44,7 +53,7 @@ const handleAdd = (e) => {
 
 	<Tabs items={items} activeItem={activeItem} on:tabChange={tabChange}/>
 	{#if activeItem === 'Current Polls' }
-	<p>Poll List component goes here</p>
+	<p> <em> Poll List component goes here </em> </p>
 	<PollList polls={polls}/>
 	{:else if activeItem === 'Add New Poll'}
 	<!-- <p>New poll form component goes here</p> -->
