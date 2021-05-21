@@ -37,11 +37,31 @@ const tabChange = (e) => {
 
 
 const handleAdd = (e) => {
-    const poll = e.detail;
-    polls = [poll, ...polls];
-    activeItem = 'Current Polls';
-		// console.log('hello', polls);
+  const poll = e.detail;
+  polls = [poll, ...polls];
+  activeItem = 'Current Polls';
+  // console.log('hello', polls);
+}
+
+const handleVote = (e) => {
+  // console.log("HANDELING VOTE ");
+  const { id, option } = e.detail;
+  // console.log("polls ....  " + polls);
+  
+  let copiedPolls = [...polls];
+  console.log(copiedPolls);
+  // figuring out which poll has been clicked on via id 
+  let upvotedPoll = copiedPolls.find((poll) => poll.id == id);
+
+  if (option === 'a'){
+    upvotedPoll.votesA++;
   }
+  if (option === 'b'){
+    upvotedPoll.votesB++;
+  }
+
+  let polls = copiedPolls;
+}
 
 </script>
 
@@ -53,12 +73,13 @@ const handleAdd = (e) => {
 
 	<Tabs items={items} activeItem={activeItem} on:tabChange={tabChange}/>
 	{#if activeItem === 'Current Polls' }
-	<p> <em> Poll List component goes here </em> </p>
-	<PollList polls={polls}/>
-	{:else if activeItem === 'Add New Poll'}
-	<!-- <p>New poll form component goes here</p> -->
+	  <p> <em> Poll List component goes here </em> </p>
+    <!-- taking an click event from polllist.svelte  -->
+    <PollList polls={polls} on:vote={handleVote} />
 
-	<CreatePollForm on:add={handleAdd} />
+	{:else if activeItem === 'Add New Poll'}
+    <!-- <p>New poll form component goes here</p> -->
+    <CreatePollForm on:add={handleAdd} />
 	{/if}
 
 </main>

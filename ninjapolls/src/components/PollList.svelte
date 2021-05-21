@@ -1,14 +1,15 @@
 <script>
+  import PollDetails from './PollDetails.svelte';
   export let polls = [];
 
-  import PollDetails from './PollDetails.svelte';
 </script>
 
 <div class="poll-list">
 {#each polls as poll (poll.id)} 
 <!-- <div>{ poll.question }</div> -->
 <div>
-  <PollDetails { poll }/>
+  <!-- forwarding the click event on:vote to the parent app.svelte  -->
+  <PollDetails { poll } on:vote />
 </div>
 
 {/each}
