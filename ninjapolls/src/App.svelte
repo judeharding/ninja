@@ -44,7 +44,7 @@ const handleAdd = (e) => {
 }
 
 const handleVote = (e) => {
-  // console.log("HANDELING VOTE ");
+  console.log("HANDELING VOTE ");
   const { id, option } = e.detail;
   // console.log("polls ....  " + polls);
   
