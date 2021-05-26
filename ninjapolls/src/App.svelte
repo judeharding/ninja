@@ -1,18 +1,16 @@
 <!-- SCRIPTS -->
 <script>
-import Header from './components/Header.svelte';
-import Footer from './components/Footer.svelte';
-import CreatePollForm from './components/CreatePollForm.svelte';
-import Tabs from './shared/Tabs.svelte';
-import PollList from './components/PollList.svelte';
+  import Header from './components/Header.svelte';
+	import Footer from './components/Footer.svelte';
+	import CreatePollForm from './components/CreatePollForm.svelte';
+	import PollList from './components/PollList.svelte';
+  import Tabs from './shared/Tabs.svelte';
 
-// tabs component
+// tabs
 let items = ['Current Polls', 'Add New Poll'];
-let activeItem =  'Current Polls';
-
-const tabChange = (e) => {
-	activeItem = e.detail;
-}
+  let activeItem = 'Current Polls';
+  const tabChange = (e) => activeItem = e.detail;
+  
 
  // polls
  let polls = [
@@ -36,12 +34,11 @@ const tabChange = (e) => {
   ];
 
 
-const handleAdd = (e) => {
-  const poll = e.detail;
-  polls = [poll, ...polls];
-  activeItem = 'Current Polls';
-  // console.log('hello', polls);
-}
+  const handleAdd = (e) => {
+    const poll = e.detail;
+    polls = [poll, ...polls];
+    activeItem = 'Current Polls';
+  }
 
 const handleVote = (e) => {
   console.log("HANDELING VOTE ");
@@ -60,7 +57,7 @@ const handleVote = (e) => {
     upvotedPoll.votesB++;
   }
 
-  let polls = copiedPolls;
+   polls = copiedPolls;
 }
 
 </script>
